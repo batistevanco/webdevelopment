@@ -1,0 +1,11 @@
+a {
+    display: inline-flex;
+    align-items: center;
+    background-image: url('../images/youtubeLogo.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 20px;
+    background-size: 16px 16px;
+
+}
+
