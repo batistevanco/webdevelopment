@@ -1,0 +1,43 @@
+table {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border: 2px solid black;
+}
+th, td {
+    width: 14.28%;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+caption {
+    background-color: rgb(170, 170, 200);
+    color: rgb(200, 190, 240);
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px;
+}
+th {
+    background-color: rgb(35, 37, 70);
+    color: rgb(200, 190, 240);
+}
+
+th:nth-child(1), th:nth-child(7),
+td:nth-child(1):not(.andere-maand), td:nth-child(7):not(.andere-maand) {
+    background-color: rgb(255, 220, 220);
+}
+
+.andere-maand {
+    color: grey;
+    background-color: lightgrey;
+}
+
+.vrije-dag {
+    background-color: rgb(250, 120, 120);
+}
+
+.vandaag {
+    color: blue;
+    font-weight: bold;
+}

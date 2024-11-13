@@ -1,0 +1,129 @@
+body {
+    background-color: #f0f4f8;
+    color: #333;
+    width: 80%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: #0078d7;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 15px;
+    color: #555;
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+}
+
+section {
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+section h3 {
+    font-size: 15px;
+    color: #0078d7;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    font-size: 12px;
+    margin: 5px;
+}
+
+a {
+    color: #0078d7;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    border-radius: 5px;
+    max-width: 100%;
+    height: auto;
+}
+
+
+table {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+
+.vrienden {
+    font: normal 12px/150% Verdana, Arial, Helvetica, sans-serif;
+    background: #fff;
+    overflow: hidden;
+    border: 6px solid #006699;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.vrienden table td, .vrienden table th {
+    padding: 9px 9px;
+}
+
+.vrienden table thead th {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');
+    background-color: #006699;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    border-left: 1px solid #0070A8;
+}
+
+.vrienden table thead th:first-child {
+    border: none;
+}
+
+.vrienden table tbody td {
+    color: #00557F;
+    border-left: 7px solid #E1EEF4;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.vrienden table tbody .alt td {
+    background: #E1EEf4;
+    color: #00557F;
+}
+
+.vrienden table tbody td:first-child {
+    border-left: none;
+}
+
+.vrienden table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.onbekend{
+    background-color: red;
+}
+
+
+
+
+
+
