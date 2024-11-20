@@ -12,6 +12,7 @@ body{
     text-align: center;
     border: 1px solid green;
     padding: 5px;
+    background: url('images/cocktail.gif') repeat-x;
 }
 
 .content{
@@ -41,6 +42,9 @@ h2{
 
 footer{
     font-size: 0.6em;
+    float: right;
+    text-align: center;
+    padding-right: 50px;
 }
 
 .weeklyspecials a:hover{
@@ -53,4 +57,16 @@ footer{
     color: #444444;
     background-color: #a7cece;
     border: dotted 2px white;
+}
+
+#guarantee img{
+    height: 50px;
+    width: 50px;
+    float: left;
+    overflow: auto;
+}
+
+#guarantee a{
+    display: flex;
+    margin-left: 50px;
 }
