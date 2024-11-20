@@ -1,0 +1,56 @@
+body{
+    width: 95%;
+    margin: auto;
+    font-size: 1.2em;
+    font-family: Verdana, Helvetic, Arial, sans-serif;
+}
+
+.weeklyspecials{
+    width: 25%;
+    display: inline-block;
+    float: right;
+    text-align: center;
+    border: 1px solid green;
+    padding: 5px;
+}
+
+.content{
+    width: 70%;
+    display: inline-block;
+}
+
+header{
+    text-align: center;
+}
+
+h1, h2{
+    color: #007e7e;
+}
+
+h1{
+    font-size: 150%;
+}
+
+h2{
+    font-size: 130%;
+}
+
+.weeklyspecials h2{
+    color: red;
+}
+
+footer{
+    font-size: 0.6em;
+}
+
+.weeklyspecials a:hover{
+    background-color: brown;
+}
+
+#guarantee{
+    margin: 30px;
+    padding: 20px;
+    color: #444444;
+    background-color: #a7cece;
+    border: dotted 2px white;
+}
