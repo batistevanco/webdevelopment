@@ -1,0 +1,27 @@
+body{
+    font-size: 1.25em;
+    background-color: lightgray;
+}
+article:nth-child(even) img {
+    float: right;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+article:nth-child(odd) img{
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+article{
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border: 1px solid black;
+    overflow: hidden;
+}
+
+img{
+    margin-bottom: 10px;
+}
