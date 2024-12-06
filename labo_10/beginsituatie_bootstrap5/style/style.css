@@ -1,0 +1,23 @@
+.row .col{
+    background-color: lightgray;
+}
+
+.row .col-7{
+    background-color: black;
+    color: white;
+}
+
+.row .col-8{
+    background-color: black;
+    color: white;
+}
+
+.row .col-4{
+    border: 1px solid black;
+}
+
+#stijl{
+    background-color: lightgray;
+    border: 1px solid black;
+}
+
