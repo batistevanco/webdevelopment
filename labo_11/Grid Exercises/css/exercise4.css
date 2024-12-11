@@ -1,0 +1,47 @@
+.container{
+    background-color: cornflowerblue;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+@media only screen and (min-width: 700px) {
+    .container{
+        grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: repeat(5, 1fr);
+    }
+}
+
+.container .block{
+    margin:20px;
+    padding:20px;
+    background-color: white;
+}
+
+.block.block1{
+
+ }
+.block.block2{
+
+}
+.block.block3{
+
+}
+.block.block4{
+
+}
+.block.block5{
+
+}
+.block.block6{
+
+}
+.block.block7{
+
+}
+.block.block8{
+
+}
+.block.block9{
+
+}
