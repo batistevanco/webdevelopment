@@ -1,0 +1,8 @@
+button {
+    background-color: white;
+    border: 2px solid black;
+}
+
+.actief {
+    background-color: lightblue;
+}
