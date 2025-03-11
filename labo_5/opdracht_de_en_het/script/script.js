@@ -10,7 +10,7 @@ const setup = () => {
         } else {
             gewijzigdeTekst += tekst[i];
             i++;
-        }
+        } 
     }
     
     console.log(gewijzigdeTekst);
