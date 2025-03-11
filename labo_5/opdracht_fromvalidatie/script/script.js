@@ -1,109 +1,65 @@
 const setup = () => {
-    document.getElementById("btnValideer").addEventListener("click", valideer);
-};
-
-const valideer = () => {
-    let geldig = true;
-
-    geldig &= valideerVoornaam();
-    geldig &= valideerFamilienaam();
-    geldig &= valideerGeboortedatum();
-    geldig &= valideerEmail();
-    geldig &= valideerAantalKinderen();
-
-    if (geldig) {
-        alert("Proficiat!");
-    }
-};
-
-const valideerVoornaam = () => {
-    let voornaam = document.getElementById("voornaam").value.trim();
-    let error = document.getElementById("error-voornaam");
-
-    if (voornaam.length > 30) {
-        toonFout("max. 30 karakters", "voornaam");
-        return false;
-    } else {
-        verwijderFout("voornaam");
-        return true;
-    }
-};
-
-const valideerFamilienaam = () => {
-    let familienaam = document.getElementById("familienaam").value.trim();
+    document.getElementById("btnValideer").addEventListener("click", function() {
+        let fout = false;
     
-    if (familienaam.length === 0) {
-        toonFout("verplicht veld", "familienaam");
-        return false;
-    }
-    if (familienaam.length > 50) {
-        toonFout("max 50 karakters", "familienaam");
-        return false;
-    }
+        function toonFout(id, boodschap) {
+            document.getElementById(id).innerText = boodschap;
+            document.getElementById(id.replace("error-", "")).classList.add("fout");
+            fout = true;
+        }
     
-    verwijderFout("familienaam");
-    return true;
-};
-
-const valideerGeboortedatum = () => {
-    let geboortedatum = document.getElementById("geboortedatum").value.trim();
-    let regex = /^\d{4}-\d{2}-\d{2}$/;
-
-    if (geboortedatum.length === 0) {
-        toonFout("verplicht veld", "geboortedatum");
-        return false;
-    }
-    if (!regex.test(geboortedatum)) {
-        toonFout("formaat is niet jjjj-mm-dd", "geboortedatum");
-        return false;
-    }
-
-    verwijderFout("geboortedatum");
-    return true;
-};
-
-const valideerEmail = () => {
-    let email = document.getElementById("email").value.trim();
-    let regex = /^[^@]+@[^@]+$/;
-
-    if (email.length === 0) {
-        toonFout("verplicht veld", "email");
-        return false;
-    }
-    if (!regex.test(email)) {
-        toonFout("geen geldig email adres", "email");
-        return false;
-    }
-
-    verwijderFout("email");
-    return true;
-};
-
-const valideerAantalKinderen = () => {
-    let aantal = document.getElementById("aantalKinderen").value.trim();
-    let getal = parseInt(aantal);
-
-    if (isNaN(getal) || getal < 0) {
-        toonFout("is geen positief getal", "aantalKinderen");
-        return false;
-    }
-    if (getal >= 99) {
-        toonFout("is te vruchtbaar", "aantalKinderen");
-        return false;
-    }
-
-    verwijderFout("aantalKinderen");
-    return true;
-};
-
-const toonFout = (boodschap, veld) => {
-    document.getElementById(`error-${veld}`).textContent = boodschap;
-    document.getElementById(veld).classList.add("invalid");
-};
-
-const verwijderFout = (veld) => {
-    document.getElementById(`error-${veld}`).textContent = "";
-    document.getElementById(veld).classList.remove("invalid");
+        function resetFout(id) {
+            document.getElementById(id).innerText = "";
+            document.getElementById(id.replace("error-", "")).classList.remove("fout");
+        }
+    
+        let voornaam = document.getElementById("voornaam").value.trim();
+        if (voornaam.length > 30) {
+            toonFout("error-voornaam", "Max. 30 karakters");
+        } else {
+            resetFout("error-voornaam");
+        }
+    
+        let familienaam = document.getElementById("familienaam").value.trim();
+        if (familienaam.length === 0) {
+            toonFout("error-familienaam", "Verplicht veld");
+        } else if (familienaam.length > 50) {
+            toonFout("error-familienaam", "Max. 50 karakters");
+        } else {
+            resetFout("error-familienaam");
+        }
+    
+        let geboortedatum = document.getElementById("geboortedatum").value.trim();
+        if (geboortedatum.length === 0) {
+            toonFout("error-geboortedatum", "Verplicht veld");
+        } else if (!/^\d{4}-\d{2}-\d{2}$/.test(geboortedatum)) {
+            toonFout("error-geboortedatum", "Formaat is niet jjjj-mm-dd");
+        } else {
+            resetFout("error-geboortedatum");
+        }
+    
+        let email = document.getElementById("email").value.trim();
+        if (email.length === 0) {
+            toonFout("error-email", "Verplicht veld");
+        } else if (!email.includes("@") || email.startsWith("@") || email.endsWith("@")) {
+            toonFout("error-email", "Geen geldig email adres");
+        } else {
+            resetFout("error-email");
+        }
+    
+        let aantalKinderen = document.getElementById("aantalKinderen").value.trim();
+        if (!/^\d+$/.test(aantalKinderen)) {
+            toonFout("error-kinderen", "Is geen positief getal");
+        } else if (parseInt(aantalKinderen) >= 99) {
+            toonFout("error-kinderen", "Is te vruchtbaar");
+        } else {
+            resetFout("error-kinderen");
+        }
+    
+        if (!fout) {
+            alert("Proficiat!");
+        }
+    });    
 };
 
 window.addEventListener("load", setup);
