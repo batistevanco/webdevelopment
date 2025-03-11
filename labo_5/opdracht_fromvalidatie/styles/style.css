@@ -1,24 +1,23 @@
 
-label {
-    display: block;
-    margin-top: 10px;
+.form-group {
+    margin-bottom: 10px;
 }
+
+
 
 input {
     display: block;
-    padding: 5px;
-    margin-top: 5px;
     width: 250px;
+    padding: 5px;
 }
 
-input.invalid {
+.invalid {
     border: 1px solid red;
 }
 
-span {
+.error {
     color: red;
     font-size: 12px;
-    display: block;
     margin-top: 2px;
 }
 
@@ -26,4 +25,3 @@ button {
     margin-top: 15px;
     padding: 8px 12px;
 }
-
