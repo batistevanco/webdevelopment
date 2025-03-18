@@ -6,7 +6,7 @@ const setup = () => {
 const addParagraph = () => {
     const div = document.getElementById("myDIV");
     const newP = document.createElement("p");
-    newP.textContent = "This is a new paragraph!";
+    newP.textContent = "Dit is de nieuwe paragraaf";
     div.appendChild(newP);
 };
 
