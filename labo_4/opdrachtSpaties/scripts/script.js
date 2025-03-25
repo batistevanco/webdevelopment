@@ -6,7 +6,7 @@ const setup = () => {
 const splitText = () => {
     let inputText = document.getElementById('inputField').value;
 
-    let noSpacesText = inputText.replace(/\s+/g, '');
+    let noSpacesText = inputText.replace(' ', '');
 
     console.log(noSpacesText);
 };
