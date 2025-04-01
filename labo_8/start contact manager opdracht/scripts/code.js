@@ -47,8 +47,12 @@ const bewerkNieuwePersoon = () => {
 
 const updateLijst = () => {
     let lstPersonen = document.getElementById("lstPersonen");
-    lstPersonen.innerHTML = ""; // Leegmaken
-    
+    lstPersonen.innerHTML = ""; // Lijst leegmaken
+
+    // Sorteer de personen array op voornaam (hoofdletter-ongevoelig)
+    personen.sort((a, b) => a.voornaam.localeCompare(b.voornaam, 'nl', { sensitivity: 'base' }));
+
+    // Voeg de gesorteerde personen toe aan de lijst
     personen.forEach((persoon, index) => {
         let option = document.createElement("option");
         option.textContent = `${persoon.voornaam} ${persoon.familienaam}`;
