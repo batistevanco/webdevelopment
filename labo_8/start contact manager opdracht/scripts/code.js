@@ -72,11 +72,27 @@ const toonPersoon = (event) => {
     document.getElementById("txtAantalKinderen").value = persoon.aantalKinderen;
 };
 
+const verwijderPersoon = () => {
+    let lstPersonen = document.getElementById("lstPersonen");
+    let geselecteerdeIndex = lstPersonen.value;
+
+    if (geselecteerdeIndex !== "") {
+        // Verwijder persoon uit de array
+        personen.splice(geselecteerdeIndex, 1);
+        // Werk de lijst bij
+        updateLijst();
+    } else {
+        alert("Selecteer een persoon om te verwijderen.");
+    }
+};
+
 // onze setup functie die de event listeners registreert
 const setup = () => {
     document.getElementById("btnBewaar").addEventListener("click", bewaarBewerktePersoon);
     document.getElementById("btnNieuw").addEventListener("click", bewerkNieuwePersoon);
     document.getElementById("lstPersonen").addEventListener("change", toonPersoon);
+    let btnVerwijder = document.getElementById("btnVerwijder");
+    btnVerwijder.addEventListener("click", verwijderPersoon);
 };
 
 window.addEventListener("load", setup);
