@@ -1,0 +1,27 @@
+/* Layout en styling voor de tafels */
+#tafel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.tafel-container {
+    width: 300px;
+    border: 1px solid #333;
+    margin: 0.5em;
+}
+
+.tafel-header {
+    background-color: #1e3a5f;
+    color: #ffffff;
+    padding: 0.5em;
+    font-weight: bold;
+}
+
+.tafel-rij {
+    padding: 0.5em;
+}
+
+.tafel-rij.even {
+    background-color: #eeeeee;
+}
