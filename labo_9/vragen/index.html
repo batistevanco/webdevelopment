@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vragen</title>
+</head>
+<body>
+<h1>Antwoorden op de vragen over Globale Variabelen</h1>
+<ul>
+    <li><strong>Blijft de data behouden als je de pagina herlaadt?</strong><br>
+        Nee. Globale variabelen worden enkel in het geheugen van de huidige pagina bijgehouden. Bij het herladen van de pagina worden ze opnieuw geïnitialiseerd en gaat de data verloren.</li>
+
+    <li><strong>Blijft de data behouden als je het tabblad sluit en de pagina opnieuw opent?</strong><br>
+        Nee. Net zoals bij het herladen, wordt de globale variabele opnieuw geïnitialiseerd. Er wordt niets opgeslagen tussen sessies.</li>
+
+    <li><strong>Gebruiken twee tabbladen die dezelfde pagina tonen, dezelfde data?</strong><br>
+        Nee. Elke pagina/tabblad heeft zijn eigen geheugenruimte. De globale variabele bestaat dus per tabblad afzonderlijk en wordt niet gedeeld.</li>
+</ul>
+
+<h1>Antwoorden op de vragen over Session Storage</h1>
+<ul>
+    <li><strong>Blijft de data behouden als je het tabblad sluit en de pagina opnieuw opent?</strong><br>
+        Nee. Session storage wordt verwijderd wanneer je het tabblad sluit. Bij het heropenen van de pagina in een nieuw tabblad begint de teller opnieuw.</li>
+
+    <li><strong>Blijft de data behouden als je de pagina herlaadt?</strong><br>
+        Ja. Session storage blijft behouden bij het herladen van de pagina zolang je het tabblad niet sluit.</li>
+
+    <li><strong>Wordt de data gedeeld door verschillende tabbladen als je de pagina meermaals opent?</strong><br>
+        Nee. Elk tabblad heeft zijn eigen aparte session storage. De teller begint in elk tabblad vanaf nul.</li>
+
+    <li><strong>Denk je dat een andere pagina (andere file of url) aan de data geraakt als je ze in hetzelfde tabblad opent?</strong><br>
+        Nee. Session storage is gebonden aan zowel het tabblad als de specifieke pagina/URL. Een andere pagina in hetzelfde tabblad heeft geen toegang tot de data van een andere pagina.</li>
+</ul>
+
+<h1>Antwoorden op de vragen over Local Storage</h1>
+<ul>
+    <li><strong>Blijft de data behouden als je het tabblad sluit en de pagina opnieuw opent?</strong><br>
+        Ja, local storage blijft behouden na het sluiten van een tabblad.</li>
+
+    <li><strong>Blijft de data behouden als je de pagina herlaadt?</strong><br>
+        Ja, de data blijft behouden bij het herladen van de pagina.</li>
+
+    <li><strong>Blijft de data behouden als je de browser afsluit, opnieuw start en de pagina weer opent?</strong><br>
+        Ja, local storage is persistent en blijft behouden na het afsluiten en herstarten van de browser.</li>
+
+    <li><strong>Blijft de data behouden als je de pagina in een andere browser opent?</strong><br>
+        Nee, local storage is gebonden aan de specifieke browser. Een andere browser heeft geen toegang tot deze data.</li>
+
+    <li><strong>Wordt de data gedeeld door verschillende tabbladen als je de pagina meermaals opent?</strong><br>
+        Ja, local storage wordt gedeeld tussen tabbladen binnen dezelfde browser en hetzelfde domein.</li>
+
+    <li><strong>Denk je dat een andere pagina (andere file of url) aan de data geraakt?</strong><br>
+        Alleen als de andere pagina op hetzelfde domein (en met dezelfde oorsprong) staat, kan ze aan de local storage data. Een andere file op een ander pad of een andere URL zonder dezelfde oorsprong heeft geen toegang.</li>
+</ul>
+</body>
+</html>
