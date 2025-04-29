@@ -55,21 +55,21 @@ const bepaalURL = () => {
 const zoekSite = () => {
     bepaalURL();
     window.open(h.url, "_blank");
-    createCard();
+    createCard(h);
+    historyWaarden.push({...h});
+    store();
 
     let zoekbalk = document.getElementById("zoekopdracht");
     zoekbalk.value = ""; // Zet inputveld leeg
-
-    store();
 }
 
 
-const createCard = () => {
+const createCard = (data) => {
     let historyElement = document.getElementById("history");
 
     // bepaal kleur op basis van titel
     let bgColor = "";
-    switch (h.title.toLowerCase()) {
+    switch (data.title.toLowerCase()) {
         case "youtube":
             bgColor = "bg-danger text-white";
             break;
@@ -92,9 +92,9 @@ const createCard = () => {
     card.innerHTML = `
         <div class="card ${bgColor}">
             <div class="card-body">
-                <h5 class="card-title">${h.title}</h5>
-                <p class="card-text">${h.text}</p>
-                <a href="${h.url}" target="_blank" class="btn btn-dark btn-sm">Go!</a>
+                <h5 class="card-title">${data.title}</h5>
+                <p class="card-text">${data.text}</p>
+                <a href="${data.url}" target="_blank" class="btn btn-dark btn-sm">Go!</a>
             </div>
         </div>
     `;
@@ -105,9 +105,9 @@ const createCard = () => {
     verwijderBtn.innerText = "Verwijder";
     verwijderBtn.href = "#";
     verwijderBtn.addEventListener("click", verwijderElement);
-    verwijderBtn.dataset.title = h.title;
-    verwijderBtn.dataset.text = h.text;
-    verwijderBtn.dataset.url = h.url;
+    verwijderBtn.dataset.title = data.title;
+    verwijderBtn.dataset.text = data.text;
+    verwijderBtn.dataset.url = data.url;
 
     card.querySelector(".card-body").appendChild(verwijderBtn);
 
@@ -115,50 +115,36 @@ const createCard = () => {
 }
 
 const store = () => {
-    historyWaarden.push({
-        title: h.title,
-        text: h.text,
-        url: h.url
-    });
-
-    localStorage.setItem("HISTORY", JSON.stringify(historyWaarden));
+    localStorage.setItem('history', JSON.stringify(historyWaarden));
 };
 
 const inladen = () => {
-    const opgeslagenTekst = localStorage.getItem("HISTORY") || '[]';
-    const opgeslagenHistory = JSON.parse(opgeslagenTekst);
-
-    opgeslagenHistory.forEach((item) => {
-        h.title = item.title;
-        h.text = item.text;
-        h.url = item.url;
-        createCard();
-        historyWaarden.push(item);
-    });
+    const saved = localStorage.getItem('history');
+    if (saved) {
+        historyWaarden = JSON.parse(saved);
+        historyWaarden.forEach(item => createCard(item));
+    }
 };
 
 const verwijderElement = (event) => {
     event.preventDefault();
-    event.stopPropagation();
-
-    let button = event.target;
-    let card = button.closest(".col-md-3");
+    const title = event.target.dataset.title;
+    const text = event.target.dataset.text;
+    const url = event.target.dataset.url;
+    const index = historyWaarden.findIndex(item => item.title === title && item.text === text && item.url === url);
+    if (index > -1) {
+        historyWaarden.splice(index, 1);
+        store();
+    }
+    const card = event.target.closest('.col-md-3');
     if (card) {
         card.remove();
     }
-
-    const title = button.dataset.title;
-    const text = button.dataset.text;
-    const url = button.dataset.url;
-
-    // Verwijder het juiste item uit historyWaarden en update localStorage
-    historyWaarden = historyWaarden.filter(item => !(item.title === title && item.text === text && item.url === url));
-    localStorage.setItem("HISTORY", JSON.stringify(historyWaarden));
 }
 
 
 
 window.addEventListener("load", () => {
-    setup();
     inladen();
+    setup();
 });
