@@ -55,9 +55,9 @@ const bepaalURL = () => {
 const zoekSite = () => {
     bepaalURL();
     window.open(h.url, "_blank");
-    createCard(h);
     historyWaarden.push({...h});
     store();
+    renderHistory();
 
     let zoekbalk = document.getElementById("zoekopdracht");
     zoekbalk.value = ""; // Zet inputveld leeg
@@ -122,8 +122,24 @@ const inladen = () => {
     const saved = localStorage.getItem('history');
     if (saved) {
         historyWaarden = JSON.parse(saved);
-        historyWaarden.forEach(item => createCard(item));
     }
+};
+
+const renderHistory = () => {
+    const historyElement = document.getElementById("history");
+    historyElement.innerHTML = "";
+    historyWaarden.sort((a, b) => {
+        const titleA = a.title.toLowerCase();
+        const titleB = b.title.toLowerCase();
+        if (titleA < titleB) return -1;
+        if (titleA > titleB) return 1;
+        const textA = a.text.toLowerCase();
+        const textB = b.text.toLowerCase();
+        if (textA < textB) return -1;
+        if (textA > textB) return 1;
+        return 0;
+    });
+    historyWaarden.forEach(item => createCard(item));
 };
 
 const verwijderElement = (event) => {
@@ -131,14 +147,13 @@ const verwijderElement = (event) => {
     const title = event.target.dataset.title;
     const text = event.target.dataset.text;
     const url = event.target.dataset.url;
-    const index = historyWaarden.findIndex(item => item.title === title && item.text === text && item.url === url);
+    const index = historyWaarden.findIndex(item =>
+        item.title === title && item.text === text && item.url === url
+    );
     if (index > -1) {
         historyWaarden.splice(index, 1);
         store();
-    }
-    const card = event.target.closest('.col-md-3');
-    if (card) {
-        card.remove();
+        renderHistory();
     }
 }
 
@@ -146,5 +161,6 @@ const verwijderElement = (event) => {
 
 window.addEventListener("load", () => {
     inladen();
+    renderHistory();
     setup();
 });
